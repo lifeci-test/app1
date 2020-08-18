@@ -1,5 +1,5 @@
 name: ${service.name}
-replicas: 6
+replicas: 7
 
 image: ${artifact.metadata.image}
 dockercfg: ${artifact.source.dockerconfig}
