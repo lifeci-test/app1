@@ -119,4 +119,9 @@ rollbackPhases:
   provisionNodes: false
   serviceName: micro-service-1
   statefulSet: false
-templatized: false
+templatized: true
+userVariables:
+- type: TEXT
+  fixed: false
+  mandatory: false
+  name: docker_image_path
