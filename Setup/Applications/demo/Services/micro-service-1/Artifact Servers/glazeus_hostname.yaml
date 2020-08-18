@@ -1,0 +1,4 @@
+harnessApiVersion: '1.0'
+type: DOCKER
+imageName: glazeus/hostname
+serverName: private DockerHub
