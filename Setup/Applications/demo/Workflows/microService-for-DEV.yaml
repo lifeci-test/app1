@@ -122,6 +122,8 @@ rollbackPhases:
 templatized: true
 userVariables:
 - type: TEXT
+  description: required image tag
   fixed: false
-  mandatory: false
+  mandatory: true
   name: docker_image_path
+  value: latest
