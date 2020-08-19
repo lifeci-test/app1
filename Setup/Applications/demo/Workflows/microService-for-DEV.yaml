@@ -189,9 +189,3 @@ userVariables:
   fixed: false
   mandatory: true
   name: InfraDefinition_KUBERNETES
-- type: TEXT
-  description: required image tag
-  fixed: false
-  mandatory: true
-  name: docker_image_path
-  value: latest
