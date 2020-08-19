@@ -92,7 +92,7 @@ phases:
   serviceName: micro-service-1
   statefulSet: false
   templateExpressions:
-  - expression: ${Service2}
+  - expression: ${Service}
     fieldName: serviceId
     metadata:
     - name: relatedField
@@ -163,7 +163,7 @@ rollbackPhases:
   serviceName: micro-service-1
   statefulSet: false
   templateExpressions:
-  - expression: ${Service2}
+  - expression: ${Service}
     fieldName: serviceId
     metadata:
     - name: relatedField
@@ -180,15 +180,10 @@ rollbackPhases:
 templatized: true
 userVariables:
 - type: ENTITY
-  description: Variable for Service entity in Rollback Canary
-  fixed: false
-  mandatory: true
-  name: Service
-- type: ENTITY
   description: Variable for Service entity in Rollback Primary
   fixed: false
   mandatory: true
-  name: Service2
+  name: Service
 - type: ENTITY
   description: Variable for Infrastructure Definition entity in Rollback Primary
   fixed: false
