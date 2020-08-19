@@ -1,7 +1,7 @@
 harnessApiVersion: '1.0'
 type: CANARY
 concurrencyStrategy: INFRA
-description: for one or more microservices
+description: for one or more microservices and many ENVs
 envName: dev
 failureStrategies:
 - executionScope: WORKFLOW
@@ -177,8 +177,20 @@ rollbackPhases:
     - name: relatedField
     - name: entityType
       value: INFRASTRUCTURE_DEFINITION
+templateExpressions:
+- expression: ${Environment}
+  fieldName: envId
+  metadata:
+  - name: relatedField
+  - name: entityType
+    value: ENVIRONMENT
 templatized: true
 userVariables:
+- type: ENTITY
+  description: Variable for Environment entity
+  fixed: false
+  mandatory: true
+  name: Environment
 - type: ENTITY
   description: Variable for Service entity in Rollback Primary
   fixed: false
