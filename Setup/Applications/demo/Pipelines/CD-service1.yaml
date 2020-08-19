@@ -1,3 +1,21 @@
 harnessApiVersion: '1.0'
 type: PIPELINE
 description: pipeline for ENVs promotion
+pipelineStages:
+- type: ENV_STATE
+  name: microService1
+  parallel: false
+  skipCondition:
+    type: DO_NOT_SKIP
+  stageName: STAGE 1
+  workflowName: microService1
+  workflowVariables:
+  - entityType: ENVIRONMENT
+    name: Environment
+    value: dev
+  - entityType: SERVICE
+    name: Service
+    value: micro-service-1
+  - entityType: INFRASTRUCTURE_DEFINITION
+    name: InfraDefinition_KUBERNETES
+    value: dev-def1
