@@ -74,7 +74,6 @@ phases:
 - type: KUBERNETES
   computeProviderName: rj-poc-k8s-cluster
   daemonSet: false
-  infraDefinitionName: dev-def1
   name: Primary
   phaseSteps:
   - type: K8S_PHASE_STEP
@@ -92,6 +91,21 @@ phases:
   provisionNodes: false
   serviceName: micro-service-1
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service2}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 rollbackPhases:
 - type: KUBERNETES
   computeProviderName: rj-poc-k8s-cluster
@@ -130,7 +144,6 @@ rollbackPhases:
 - type: KUBERNETES
   computeProviderName: rj-poc-k8s-cluster
   daemonSet: false
-  infraDefinitionName: dev-def1
   name: Rollback Primary
   phaseNameForRollback: Primary
   phaseSteps:
@@ -149,6 +162,21 @@ rollbackPhases:
   provisionNodes: false
   serviceName: micro-service-1
   statefulSet: false
+  templateExpressions:
+  - expression: ${Service2}
+    fieldName: serviceId
+    metadata:
+    - name: relatedField
+    - name: artifactType
+      value: DOCKER
+    - name: entityType
+      value: SERVICE
+  - expression: ${InfraDefinition_KUBERNETES}
+    fieldName: infraDefinitionId
+    metadata:
+    - name: relatedField
+    - name: entityType
+      value: INFRASTRUCTURE_DEFINITION
 templatized: true
 userVariables:
 - type: ENTITY
@@ -157,7 +185,12 @@ userVariables:
   mandatory: true
   name: Service
 - type: ENTITY
-  description: Variable for Infrastructure Definition entity in Rollback Canary
+  description: Variable for Service entity in Rollback Primary
+  fixed: false
+  mandatory: true
+  name: Service2
+- type: ENTITY
+  description: Variable for Infrastructure Definition entity in Rollback Primary
   fixed: false
   mandatory: true
   name: InfraDefinition_KUBERNETES
